@@ -1,41 +1,36 @@
 package com.techelevator;
 
-import com.techelevator.product.Beverage;
-import com.techelevator.product.Candy;
-import com.techelevator.product.Chips;
-import com.techelevator.product.Product;
-
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
 public class Program {
 
-	public static void main(String[] args)
+	public static void main(String[] args) throws FileNotFoundException
 
 	{
-		System.out.println("Hello World!");
-		Product test = new Beverage("chunk", .50);
-		System.out.println(test.getMessage());
+		Map<String, Product> productMap = new HashMap<>();
+		String invPath = "C:\\Users\\Student\\workspace\\java-minicapstonemodule1-team4\\vendingmachine.csv";
+		File invFile = new File(invPath);
+		try (Scanner invScanner = new Scanner(invFile)) {
+			while (invScanner.hasNextLine()) {
+				String currentLine = invScanner.nextLine();
+				String[] productParts = currentLine.split(",");
+				String productLocation = productParts[0];
+				String productName = productParts[1];
+				double productPrice = Double.parseDouble(productParts[2]);
+				String productType = productParts[3];
+				productMap.put(productLocation, new Product(productName, productPrice, productType));
 
 
 
-
+			}
+		}
 	}
 
 }
 
-//	String invListPath = "C:\\Users\\Student\\workspace\\java-minicapstonemodule1-team4\\vendingmachine.csv";
-//	File inventoryList = new File(invListPath);
-//		try (Scanner invScanner = new Scanner(inventoryList);){
-//				while (invScanner.hasNextLine()) {
-//				inventory.put(1st scan, 2nd scan);
-//
-//				}
-//				}
-//				catch (FileNotFoundException e) {
-//				System.out.println("WARNING: NO INV LIST FOUND");
-//				}
-//
+
