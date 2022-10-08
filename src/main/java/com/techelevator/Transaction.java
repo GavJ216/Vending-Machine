@@ -35,28 +35,7 @@ public class Transaction {
 
     // Methods
 
-    //
 
 
-
-    public void feedMoney (double fedMoney){
-                 //receives a double and adds it to the currentBalance.
-                // returns current balance with fed money added.
-                // write a line to account for the change in stock.
-
-        currentBalance = currentBalance + fedMoney;
-
-    }
-
-    public void dispenseTransaction (Product product){
-
-    }
-
-    /* todo - write three methods for individual transactions
-    1- feed money transaction method : write to file saying : Date, Time, AM/PM, "FEED MONEY:", Initial balance, post change balance.
-    2- dispense product method:  Date, Time, AM/PM, "itemName + location", Initial balance, post change balance.
-    3- give change method Date, Time, AM/PM, "GIVE CHANGE", Initial balance, post change balance ( WHICH SHOULD BE ZERO AFTER )
-
-    */
 
 }

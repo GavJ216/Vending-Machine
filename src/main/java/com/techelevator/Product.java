@@ -1,9 +1,11 @@
 package com.techelevator;
 
 import java.math.BigDecimal;
+import java.text.DecimalFormat;
 
 public class Product {
     // Properties
+
     private String name;
     private double price;
     private int stock;
@@ -32,23 +34,15 @@ public class Product {
         return stock;
     }
 
+    public String getType() {
+        return type;
+    }
     // Methods
 
-    public String getMessage() {
-        String message = "";
-        if (this.type == "Chip") {
-            message = "Crunch crunch, yum!";
-        }
-        else if (this.type == "Candy") {
-            message = "Munch munch, yum!";
-        }
-        else if (this.type == "Drink") {
-            message = "Slurp slurp, yum!";
-        }
-        else if (this.type == "Gum") {
-            message = "Chew chew, yum!";
-        }
-        return message;
+
+
+    public void decreaseStock() {
+        this.stock -= 1;
     }
 
 
