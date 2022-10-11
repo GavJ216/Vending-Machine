@@ -83,21 +83,22 @@ public class Program {
 						String purchaseChoice = userRead.nextLine();
 
 						if (purchaseChoice.equals("1")){
-							while (true) {
-								System.out.println("How much would you like to deposit (please only enter whole dollar amounts)? ");
-								String sMoney = userRead.nextLine();
-								double money = Integer.parseInt(sMoney);
-
-								if (money > 0){
-									user.increaseBalance(money);
-									System.out.println("Deposited: $" + String.format("%.2f",money));
-									salesWriter.write(currentTime + " FEED MONEY: $" + String.format("%.2f", money) + " $" + String.format("%.2f", user.getBalance()) + System.getProperty("line.separator"));
-									break;
-								} else {
-									System.out.println("Please enter a valid amount");
-								}
-							}
-							//TODO- MAKE EXCEPTION IF USER INPUT IS NOT WHOLE NUMBER
+								boolean incorrectInput;
+								do {
+									System.out.println("How much would you like to deposit? (Please enter a single whole number with no decimals) ");
+									String sMoney = userRead.nextLine();
+									try {
+										double money = Integer.parseInt(sMoney);
+										user.increaseBalance(money);
+										System.out.println("Deposited: $" + String.format("%.2f", money));
+										salesWriter.write(currentTime + " FEED MONEY: $" + String.format("%.2f", money) + " $" + String.format("%.2f", user.getBalance()) + System.getProperty("line.separator"));
+										incorrectInput = false;
+									}
+									catch (NumberFormatException e) {
+										System.out.println("Please enter whole dollar amounts only!");
+										incorrectInput = true;
+									}
+								} while (incorrectInput);
 
 
 						}
